@@ -31,7 +31,9 @@
                 android:layout_marginTop="16dp"
                 app:layout_constraintTop_toBottomOf="@id/image"
                 app:layout_constraintEnd_toStartOf="@+id/end_grid"
-                app:layout_constraintStart_toStartOf="@+id/start_grid"/>
+                app:layout_constraintStart_toStartOf="@+id/start_grid"
+                android:textColor="#555555"
+                android:textSize="24sp" />
 
         <TextView
                 android:id="@+id/intro_text"
@@ -51,7 +53,9 @@
                 android:layout_marginTop="13dp"
                 app:layout_constraintStart_toEndOf="@id/start_grid"
                 app:layout_constraintEnd_toStartOf="@id/end_grid"
-                app:layout_constraintTop_toBottomOf="@+id/intro_text"/>
+                app:layout_constraintTop_toBottomOf="@+id/intro_text"
+                android:textColor="#555555"
+                android:textSize="18sp"/>
 
         <TextView
                 android:id="@+id/description"
