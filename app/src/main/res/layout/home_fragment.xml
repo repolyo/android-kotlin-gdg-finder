@@ -41,7 +41,7 @@
                     android:layout_marginTop="16dp"
                     android:fontFamily="@font/lobster"
                     android:text="@string/about_google_developer_groups"
-                    android:textAppearance="?attr/textAppearanceHeadline6"
+                    android:textAppearance="?textAppearanceHeadline5"
                     app:layout_constraintEnd_toStartOf="@+id/end_grid"
                     app:layout_constraintStart_toStartOf="@+id/start_grid"
                     app:layout_constraintTop_toBottomOf="@id/image" />
@@ -61,11 +61,11 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:text="@string/gdgs_are"
+                    android:textAppearance="?textAppearanceHeadline6"
                     android:layout_marginTop="13dp"
                     app:layout_constraintStart_toEndOf="@id/start_grid"
                     app:layout_constraintEnd_toStartOf="@id/end_grid"
-                    app:layout_constraintTop_toBottomOf="@+id/intro_text"
-                    style="@style/TextAppearance.Subtitle"/>
+                    app:layout_constraintTop_toBottomOf="@+id/intro_text"/>
 
                 <TextView
                     android:id="@+id/description"
