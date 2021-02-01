@@ -10,6 +10,9 @@ import retrofit2.http.GET
 
 
 private const val BASE_URL = "https://android-kotlin-fun-mars-server.appspot.com/"
+
+enum class GdgApiStatus { LOADING, ERROR, DONE }
+
 interface GdgApiService {
     @GET("gdg-directory.json")
     fun getChapters():

@@ -3,6 +3,7 @@ package com.example.android.gdgfinder.search
 import android.location.Location
 import androidx.lifecycle.*
 import com.example.android.gdgfinder.network.GdgApi
+import com.example.android.gdgfinder.network.GdgApiStatus
 import com.example.android.gdgfinder.network.GdgChapter
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
@@ -17,6 +18,8 @@ class GdgListViewModel: ViewModel() {
     private var filter = FilterHolder()
 
     private var currentJob: Job? = null
+    private var _status = MutableLiveData<GdgApiStatus>()
+    val status: LiveData<GdgApiStatus> get() = _status
 
     private val _gdgList = MutableLiveData<List<GdgChapter>>()
     private val _regionList = MutableLiveData<List<String>>()
@@ -46,8 +49,11 @@ class GdgListViewModel: ViewModel() {
         currentJob?.cancel() // if a previous query is running cancel it before starting another
         currentJob = viewModelScope.launch {
             try {
+                _status.value = GdgApiStatus.LOADING
+
                 // this will run on a thread managed by Retrofit
                 _gdgList.value = repository.getChaptersForFilter(filter.currentValue)
+                _status.value = GdgApiStatus.DONE
                 repository.getFilters().let {
                     // only update the filters list if it's changed since the last time
                     if (it != _regionList.value) {
@@ -55,6 +61,7 @@ class GdgListViewModel: ViewModel() {
                     }
                 }
             } catch (e: IOException) {
+                _status.value = GdgApiStatus.ERROR
                 _gdgList.value = listOf()
             }
         }
